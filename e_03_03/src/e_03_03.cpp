@@ -2,10 +2,13 @@
  * 指定された条件を満たす全要素を配列から探索する関数を作成。
  * 作成日：2017年5月25日
  * 作成者：浅田　知嗣
+ * 更新日：2017年6月9日
+ * 更新者：浅田　知嗣
  */
 
 #include <iostream>
 #include <ctime>
+#include <cstdlib>
 
 using namespace std;
 
@@ -25,7 +28,9 @@ int main()
 {
 	int a[10];								//適当な整数をいれる配列。
 	int n = sizeof(a) / sizeof(a[0]);		//整数を入れる配列の要素数。
-	int** idx;							//先頭要素を格納するポインタ。
+	int x;							//先頭要素を格納する変数。
+	int* y = &x;						//先頭要素を格納する変数を指すポインタ。
+	int** idx = &y;					//先頭要素を格納する変数を指すポインタのポインタ。
 
 	srand(time(NULL));						//乱数の種を決定。
 
@@ -52,9 +57,11 @@ int main()
 //指定された条件を満たす要素を配列から線形探索する関数の定義。
 int search_if_all(const int a[], int n, bool cond(int n), int** idx)
 {
-	int* b = new int [n];	//発見した要素の場所を格納する配列。
+	int b[n];	//発見した要素の場所を格納する配列。
 
-	//動的な配列を初期化する。
+	int judge = 0;		//配列の場所を管理する変数。
+
+	//配列を初期化する。
 	for(int i = 0; i < n; i++) {
 		b[i] = -1;
 	}
@@ -62,22 +69,19 @@ int search_if_all(const int a[], int n, bool cond(int n), int** idx)
 	//配列すべてに対して識別を行う。
 	for(int i = 0; i < n; i++) {
 		if(cond(a[i])) {
-			*(b++) = i;
+			b[judge++] = i;
 		}
 	}
 
-	b[0] = 1;
-
 	//もしなにも発見できていない場合は
 	if(b[0] == -1) {
-		idx = NULL;
+		**idx = 0;
 	} else {
-		*idx = &b[0];
+		**idx = b[0];
 	}
-	idx = NULL;
 
 	//見つけた要素の場所を返す。
-	return b[0];
+	return **idx;
 }
 
 //渡された配列の要素が5で割り切れるかの識別を行う関数の宣言。
