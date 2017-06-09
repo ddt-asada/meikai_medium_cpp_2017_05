@@ -1,22 +1,24 @@
-/*演習9-9
- * スタッククラステンプレートにメンバ関数を追加。
+/*演習9-10
+ * キューを実現するクラステンプレートの作成。
  * 作成日：2017年6月5日
  * 作成者：浅田　知嗣
+ * 更新日：2017年6月9日
+ * 更新者：浅田　知嗣
  */
 
 #ifndef ___Class_SimpleStackQue
 #define ___Class_SimpleStackQue
 
 //スタッククラステンプレート
-template<class Type> class SimpleStack
+template<class Type> class Queue
 {
-	int size;			//スタックの容量。
-	int ptr;			//スタックのポインタ。
-	int q;			//スタックからキューするための変数。
-	Type* stk;			//スタックの本体の先頭要素へのポインタ。
+	int size;				//スタックの容量。
+	int count;				//スタックの中に入れた要素数をカウントする。
+	int ptr;				//スタックのポインタ。
+	Type* stk;				//スタックの本体の先頭要素へのポインタ。
 
-	SimpleStack(const SimpleStack<Type>&);		//コピーコンストラクタをの外部呼出しを無効。
-	SimpleStack& operator=(const SimpleStack<Type>&);	//代入演算子を外部呼出しを無効。
+	Queue(const Queue<Type>&);		//コピーコンストラクタをの外部呼出しを無効。
+	Queue& operator=(const Queue<Type>&);	//代入演算子を外部呼出しを無効。
 
 public:
 	//スタックが満タンの時にプッシュされたときに送出される例外クラス。
@@ -26,16 +28,16 @@ public:
 	class Empty{};
 
 	//明示的コンストラクタ。
-	explicit SimpleStack(int sz);
+	explicit Queue(int sz);
 
 	//デストラクタ
-	~SimpleStack();
+	~Queue();
 
 	//プッシュ
 	Type& push(const Type& x);
 
 	//ポップ
-	Type que();
+	Type pop();
 
 	//頂上のデータを変更することなくそのまま返す。
 	Type& peek() const;
