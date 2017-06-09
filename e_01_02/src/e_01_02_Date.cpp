@@ -2,6 +2,8 @@
  * 与えられた日付が不正であれば、正しい値に変換して返却するように変更したクラス。
  * 作成日：2017年5月21日
  * 作成者：浅田　知嗣
+ * 更新日：2017年6月9日
+ * 更新者：浅田　知嗣
  */
 
 // 日付クラスDate（ソース部）
@@ -14,7 +16,7 @@
 using namespace std;
 
 // 平年の各月の日数
-int Date::dmax[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int Date::dmax[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 //--- year年の日数（平年…365／閏年…366）---//
 int Date::days_of_year(int year)
@@ -48,13 +50,13 @@ Date::Date(int yy, int mm, int dd)
 //--- 日付をyy年mm月dd日に設定 ---//
 void Date::set(int yy, int mm, int dd)
 {
-	for( ;dd > dmax[mm % 12] || dd < 1 ; ) {
+	for( ;dd > dmax[mm % 13] || dd < 1 ; ) {
 		//日数がその月の範囲を超えるとき。
-		if(dd > dmax[mm % 12]) {
-			dd -= dmax[mm % 12];	//日数を減らす。
+		if(dd > dmax[mm % 13]) {
+			dd -= dmax[mm % 13];	//日数を減らす。
 			mm++;			//月を一つ加算し、
 		} else if (dd < 1) {
-			dd += dmax[mm % 12];	//日数を増やす。
+			dd += dmax[mm % 13];	//日数を増やす。
 			mm--;			//月を一つ減らす。
 		}
 	}
