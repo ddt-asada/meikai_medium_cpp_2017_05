@@ -2,6 +2,8 @@
  * デコンストラクタの呼び出し順を確認するプログラム。
  * 作成日：2017年5月29日
  * 作成者：浅田　知嗣
+ * 更新日：2017年6月9日
+ * 更新者：浅田　知嗣
  */
 
 #include <iostream>
@@ -66,7 +68,7 @@ public:
 	}
 
 	//コンストラクタの定義。
-	Derived(int a, int b, int c) : m2(a), m1(b), Base(c)
+	Derived(int a, int b, int c) :Base(c), m1(a), m2(b)
 	{
 		say();
 	}
