@@ -2,6 +2,8 @@
  * 図形クラス群に直角二等辺三角形を表示するクラス群を追加する。
  * 作成日：2017年5月30日
  * 作成者：浅田　知嗣
+ * 更新日：2017年6月9日
+ * 更新者：浅田　知嗣
  */
 
 #include <iostream>
@@ -27,8 +29,10 @@ int main()
 			new RectEquilTriangleRB(2),		//右下直角二等辺三角形クラス。
 	};
 
+	const int n = sizeof(a) / sizeof(a[0]);		//クラスの配列の要素数。
+
 	//警告でないようにiをunsigned型にて宣言。
-	for(unsigned i = 0; i < sizeof(a) / sizeof( a[0]); i++) {
+	for(int i = 0; i < n; i++) {
 		//図形に関する情報を表示。
 		a[i] -> print();
 
@@ -41,7 +45,7 @@ int main()
 	}
 
 	//警告でないようにiをunsigned型にて宣言。
-	for(unsigned i = 0; i < sizeof(a) / sizeof( a[0]); i++) {
+	for(int i = 0; i < n; i++) {
 		delete a[i];
 	}
 }
