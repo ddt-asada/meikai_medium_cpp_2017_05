@@ -2,6 +2,8 @@
  * スタッククラステンプレートにメンバ関数を追加。
  * 作成日：2017年6月5日
  * 作成者：浅田　知嗣
+ * 更新日：2017年6月9日
+ * 更新者：浅田　知嗣
  */
 
 #ifndef ___Class_SimpleStackImplementation
@@ -13,7 +15,7 @@ template<class Type>
 SimpleStack<Type>::SimpleStack(int sz) : size(sz), ptr(0)
 {
 	//スタックの容量を確保する。
-	stk = new Type[size + 1];
+	stk = new Type[size];
 }
 
 //デストラクタ
