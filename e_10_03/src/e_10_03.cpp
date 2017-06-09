@@ -2,6 +2,8 @@
  * 日付クラスDateとTwinの2次元配列を作成するプログラム。
  * 作成日：2017年6月6日
  * 作成者：浅田　知嗣
+ * 更新日：2017年6月9日
+ * 更新者：浅田　知嗣
  */
 
 #include <vector>
@@ -38,7 +40,7 @@ int main()
 	vector<vector<Date> > x(row, vector<Date>(column));
 
 	//Twin型の行列を作成。
-	vector<vector<Twin<int>> > y(row, vector<Twin<int>>(column));
+	vector<vector<Twin<int> > > y(row, vector<Twin<int> >(column));
 
 	//Date型の行列の全要素を表示。
 	cout	<<"行列Date\n";
