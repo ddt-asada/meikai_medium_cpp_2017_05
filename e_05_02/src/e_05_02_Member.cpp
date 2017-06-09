@@ -2,6 +2,8 @@
  * 会員クラス群に、参照渡しによるdynamiccastの動作を確認するプログラム。
  * 作成日；2017年5月29日
  * 作成者：浅田　知嗣
+ * 更新日：2017年6月9日
+ * 更新者：浅田　知嗣
  */
 
 #include <string>
@@ -9,6 +11,9 @@
 #include "e_05_02_Member.h"
 
 using namespace std;
+Member::~Member()
+{
+}
 
 //コンストラクタの定義。
 Member::Member(const string& name, int no, double w) : full_name(name), number(no)

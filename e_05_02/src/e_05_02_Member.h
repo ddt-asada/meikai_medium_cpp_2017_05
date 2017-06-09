@@ -2,6 +2,8 @@
  * 会員クラス群に、参照渡しによるdynamiccastの動作を確認するプログラム。
  * 作成日；2017年5月29日
  * 作成者：浅田　知嗣
+ * 更新日：2017年6月9日
+ * 更新者：浅田　知嗣
  */
 
 #ifndef ___Member
@@ -17,6 +19,8 @@ class Member
 	double		weight;			//体重。
 
 public:
+	virtual ~Member();
+
 	//コンストラクタ。
 	Member(const std::string& name, int no, double w);
 
