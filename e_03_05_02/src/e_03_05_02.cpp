@@ -2,6 +2,8 @@
  * 九九の加算表と乗算票のどちらを表示するのかを選択させ、表示させるプログラム。
  * 作成日：2017年5月25日
  * 作成者：浅田　知嗣
+ * 更新日：2017年6月9日
+ * 更新者：浅田　知嗣
  */
 
 #include<iomanip>
@@ -37,6 +39,7 @@ void (*kukuselect())()
 	case 0:		return kukusum;
 	case 1:		return kukumul;
 	}
+	return NULL;
 }
 
 void kukusum()
