@@ -2,6 +2,8 @@
  * 配列クラステンプレートをインクルードモデルを使用して再現したプログラム
  * 作成日：2017年6月4日
  * 作成者：浅田　知嗣
+ * 更新日：2017年6月9日
+ * 更新者：浅田　知嗣
  */
 
 // 配列クラステンプレートArray（bool型への特殊化）
@@ -15,7 +17,7 @@
 //===== 配列クラステンプレートArray（bool型への特殊化）=====//
 template<> class Array<bool> {
 	typedef unsigned char BYTE;
-	static const int CHAR_BITS = std::numeric_limits<unsigned char>::digits;
+	static const int CHAR_BITS = std::numeric_limits<unsigned char>::digits10;
 
 	int nelem;		// bool型配列の要素数
 	int velem;		// bool型配列を格納するためのBYTE型配列の要素数
@@ -27,7 +29,7 @@ template<> class Array<bool> {
 public:
 	//=== ビットベクトル（バイト）中の１ビットへの参照を表すためのクラス ===//
 	class BitOfByteRef {
-		BYTE vec;		// 参照先BYTE
+		BYTE& vec;		// 参照先BYTE
 		int idx;		// 参照先BYTE中のビット番号
 
 	public:
