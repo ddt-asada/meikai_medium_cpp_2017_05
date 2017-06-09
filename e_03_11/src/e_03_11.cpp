@@ -2,6 +2,8 @@
  * quicksort関数を用いて、配列を昇順にソートするプログラム。
  * 作成日：2017年5月25日
  * 作成者：浅田　知嗣
+ * 更新日：2017年6月9日
+ * 更新者：浅田　知嗣
  */
 
 #include <cstdlib>
@@ -29,27 +31,28 @@ namespace
 void quicksort(void* base, size_t nmemb, size_t size, int (*compar)(const void*, const void*));
 
 //文字列の比較関数の宣言。
-int char_cmp(const char** a, const char** b);
+int int_cmp(const int* a, const int* b);
 
 int main()
 {
-	//ソートするポインタによる文字列の宣言。
-	const char *arr[] = {"LISP", "C", "Ada", "Pascal"};
+	//ソートする配列の宣言。
+	const int n = 100;		//配列の要素数。
 
-	//ソートする前の文字列の表示。
-	cout	<<"以下の文字列を昇順にソートします。\n";
+	int* x = new int[n];	//配列を生成。
 
-	for(int i = 0; arr[i]; i++) {
-		cout	<<"arr["	<<i	<<"] = "	<<arr[i]	<<'\n';
+	//配列の各要素に値を代入する。
+	for(int i = 0; i < n; i++) {
+		x[i] = i;
+		cout	<<"x["	<<i	<<"] = "	<<x[i]	<<'\n';
 	}
 
-	qsort(arr, sizeof(arr)/sizeof(arr[0]), sizeof(char *),reinterpret_cast<int (*)(const void*, const void*)>(char_cmp));
+	quicksort(x, n, sizeof(int),reinterpret_cast<int (*)(const void*, const void*)>(int_cmp));
 
 	//ソートし終わった文字列を表示。
-	cout	<<"\n文字列の並び替えが完了しました。\n結果は以下の通りです。\n";
+	cout	<<"\n配列の並び替えが完了しました。\n結果は以下の通りです。\n";
 
-	for(int i = 0; arr[i]; i++) {
-		cout	<<"arr["	<<i	<<"] = "	<<arr[i]	<<'\n';
+	for(int i = 0; i < n; i++) {
+		cout	<<"x["	<<i	<<"] = "	<<x[i]	<<'\n';
 	}
 
 	return 0;
@@ -106,7 +109,17 @@ void quicksort(void* base, size_t nmemb, size_t size, int (*compar)(const void*,
 }
 
 //文字列の比較関数の定義。
-int char_cmp(const char** a, const char** b)
+int int_cmp(const int* a, const int* b)
 {
-	return strcmp(*a, *b);
+	int judge = 0;
+
+	//大小を比較しそれに応じた値を返す。
+		if(*a < *b) {
+			judge = 1;
+		} else if (*a > *b) {
+			judge = -1;
+		}
+
+		//判定を返す。
+		return judge;
 }
