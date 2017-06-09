@@ -13,6 +13,10 @@
 class MathException
 {
 public:
+	virtual~MathException()
+	{
+	}
+
 	virtual std::string what() const
 	{
 		std::string er ="数値演算例外\n";
