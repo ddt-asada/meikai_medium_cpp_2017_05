@@ -1,3 +1,11 @@
+/*演習8-3
+ * 例外ハンドラをクラス階層化したプログラム。
+ * 作成日：2017年5月31日
+ * 作成者：浅田　知嗣
+ * 更新日：2017年6月9日
+ * 更新者：浅田　知嗣
+ */
+
 #include <iostream>
 #include "e_08_03_01_MathException.h"
 
@@ -25,7 +33,7 @@ int main()
 	//範囲外の時は入力を繰りかえす。
 	do {
 		cout	<<"xの値：";
-		cin		>>x;
+		cin		>>x;;
 	} while (x < 0 || x > 99);
 
 	//範囲外の時は入力を繰りかえす。
@@ -47,6 +55,9 @@ int main()
 	}
 
 	//例外補足。
+	catch (const DividedByZero&) {
+		cout	<<"DividedByZeroを捕捉：0による除算が発生！！\n";
+	}
 	catch (const MathException&) {
 		cout	<<"MathExceptionを捕捉：何らかの算術例外が発生。\n";
 	}
@@ -96,6 +107,10 @@ int mul2(int x, int y)
 //除算する関数の宣言。
 int div2(int x, int y)
 {
+	//もし両方が0なら先に例外を投げる。
+	if(y == 0) {
+		throw DividedByZero();
+	}
 	//計算結果が範囲内かどうか判定する関数を呼び出しもし範囲内であった場合にはその値を返却する。
 	return check(x / y);
 }
