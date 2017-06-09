@@ -2,7 +2,11 @@
  * 多重継承したクラス群のオブジェクトの初期化順を確認するプログラム。
  * 作成日：2017年5月30日
  * 作成者：浅田　知嗣
+ * 更新日：2017年6月9日
+ * 更新者：浅田　知嗣
  */
+
+//コンストラクタのデータメンバの初期化順に関するエラーが出てます。
 
 #include <iostream>
 
@@ -41,7 +45,7 @@ public:
 	int yy;
 
 	//コンストラクタ。
-	X(int a = 1, int b = 1, int c = 1) : yy(a), A(b), B(c)
+	X(int a = 1, int b = 1, int c = 1) : A(b), B(c), yy(a)
 	{
 		cout	<<"X::yyを"	<<yy	<<"に初期化しました。\n";
 	}
@@ -54,7 +58,7 @@ public:
 	int yy;
 
 	//コンストラクタ。
-	Y(int a = 1, int b = 1, int c = 1) : yy(a), B(b), A(c)
+	Y(int a = 1, int b = 1, int c = 1) : B(b), A(c), yy(a)
 	{
 		cout	<<"Y::yyを"	<<yy	<<"に初期化しました。\n";
 	}
@@ -67,7 +71,7 @@ public:
 	int zz;
 
 	//コンストラクタ。
-	Z(int a, int b, int c) : zz(a), X(b), Y(c)
+	Z(int a, int b, int c) : X(b), Y(c), zz(a)
 	{
 		cout	<<"Z::zzを"	<<zz	<<"に初期化しました。\n";
 	}
