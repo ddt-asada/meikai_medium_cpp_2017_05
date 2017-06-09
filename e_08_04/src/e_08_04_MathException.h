@@ -2,6 +2,8 @@
  * 例外クラスに仮想関数を追加したものの動作を確認するプログラム。
  * 作成日：2017年5月31日
  * 作成者：浅田　知嗣
+ * 更新日：2017年6月9日
+ * 更新者：浅田　知嗣
  */
 
 #ifndef ___Math_Exception
@@ -11,6 +13,10 @@
 class MathException
 {
 public:
+	virtual~MathException()
+	{
+	}
+
 	virtual void display() const
 	{
 		std::cout	<<"数値演算例外\n";
