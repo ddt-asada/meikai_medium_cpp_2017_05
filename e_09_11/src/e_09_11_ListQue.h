@@ -63,7 +63,7 @@ public:
 			top = new Node<Type>(new Type(x), ptr);
 		}
 
-		catch(const bad_alloc) {
+		catch(const std::bad_alloc&) {
 			throw Que<char>::Overflow();
 		}
 	}
