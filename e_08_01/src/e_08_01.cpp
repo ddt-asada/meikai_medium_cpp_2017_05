@@ -2,12 +2,15 @@
  * set_terminate関数によってexception_errorを登録したプログラムの動作の検証。
  * 作成日：2017年5月31日
  * 作成者：浅田　知嗣
+ * 更新日：2017年6月9日
+ * 更新者：浅田　知嗣
  */
 
 #include <cctype>
 #include <string>
 #include <iostream>
 #include <exception>
+#include <cstdlib>
 
 using namespace std;
 
