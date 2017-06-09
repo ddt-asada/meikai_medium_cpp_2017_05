@@ -2,10 +2,13 @@
  * 指定された条件を満たす要素を配列から線形探索する関数の作成。
  * 作成日：2017年5月25日
  * 作成者：浅田　知嗣
+ * 更新日：2017年6月9日
+ * 更新者：浅田　知嗣
  */
 
 #include <iostream>
 #include <ctime>
+#include <cstdlib>
 
 using namespace std;
 
